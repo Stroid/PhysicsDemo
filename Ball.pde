@@ -5,18 +5,20 @@ class Ball {
   PVector acc;
 
   float r;
+  float d;
 
   PVector gravity;
   PVector wind;
-  
+
   Boolean landed = false;
 
   public Ball(float x, float y, float a) {
     this.pos = new PVector(x, y);
     this.vel = PVector.fromAngle(radians(a));
     this.acc = new PVector();
-    this.r = r;
-    
+    this.r = 5;
+    this.d = r*2;
+
     this.vel.setMag(14);
 
     this.gravity = new PVector(0, 0.2);
@@ -28,7 +30,7 @@ class Ball {
     this.pos.add(vel);
     this.acc.mult(0);
 
-    if(this.pos.y > height-20-r){
+    if (this.pos.y > height-20-r) {
       landed = true;
     }
 
@@ -38,30 +40,17 @@ class Ball {
     if (! this.landed) {
       this.addForce(gravity);
       //this.addForce(wind);
-    }else{
+    } else {
       this.vel.mult(0);
     }
-    
-    
   }
 
   public void render() {
     fill(0);
-    ellipse(this.pos.x, this.pos.y, this.r*2, this.r*2);
+    ellipse(this.pos.x, this.pos.y, this.d, this.d);
   }
 
   public void addForce(PVector force) {
     this.acc.add(force);
-  }
-
-
-  public float clamp(float val, float min, float max) {
-    if (val > max) {
-      return max;
-    } else if (val < min) {
-      return min;
-    } else {
-      return val;
-    }
   }
 }
