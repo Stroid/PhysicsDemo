@@ -4,13 +4,13 @@ color bgColor = #46ADFF;
 color groundColor = #00FF28;
 color fgColor = #000000;
 
-Ball ball;
+Turret turret;
 
 void setup() {
   size(720, 480);
   noStroke();
   
-  ball = new Ball(width/2, height/2,10);
+  turret = new Turret(width/2,height/2);
 }
 
 void draw() {
@@ -18,6 +18,7 @@ void draw() {
   fill(groundColor);
   rect(0,height, width, -30);
   
-  ball.render();
-  ball.update();
+  turret.update();
+  turret.render();
+  
 }
