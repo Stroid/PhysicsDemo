@@ -1,4 +1,4 @@
-class Ball {
+class Ball { //<>//
 
   PVector pos;
   PVector vel;
@@ -12,6 +12,8 @@ class Ball {
 
   Boolean landed = false;
 
+  int hafLife = 200;
+
   public Ball(float x, float y, float a) {
     this.pos = new PVector(x, y);
     this.vel = PVector.fromAngle(radians(a));
@@ -22,7 +24,7 @@ class Ball {
     this.vel.setMag(14);
 
     this.gravity = new PVector(0, 0.2);
-    this.wind = new PVector(0.05, 0);
+    this.wind = new PVector(-0.05, 0);
   }
 
   public void update() {
@@ -39,10 +41,12 @@ class Ball {
 
     if (! this.landed) {
       this.addForce(gravity);
-      //this.addForce(wind);
+      this.addForce(wind);
     } else {
       this.vel.mult(0);
     }
+
+    hafLife--;
   }
 
   public void render() {

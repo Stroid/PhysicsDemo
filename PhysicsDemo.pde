@@ -29,17 +29,17 @@ void draw() {
   turret.render();
 
   if (keyPressed) {
-    if (key == 'a') {
-      turret.a -= 2;
-    } else if (key == 'd') {
-      turret.a += 2;
-    } else if (key == ' ') {
-      turret.shoot();
-    }
+   if (key == 'a') {
+     turret.a -= 2;
+   } 
+   if (key == 'd') {
+     turret.a += 2;
+   } 
+   if (key == ' ') {
+     turret.shoot();
+   }
   }
 }
-
-
 
 public float clamp(float val, float min, float max) {
   if (val > max) {

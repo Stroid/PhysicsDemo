@@ -24,6 +24,8 @@ class Turret {
     for (int I = 0; I < balls.size(); I++) {
       balls.get(I).update();
       balls.get(I).render();
+      
+      if(balls.get(I).hafLife < 0) balls.remove(I);
     }
 
     if (!armed) {
@@ -65,10 +67,10 @@ class Turret {
 
   public void shoot() {
     if (armed) {
-      balls.add(new Ball(this.x, this.y, -0));
+      balls.add(new Ball(this.x, this.y-13, this.a));
       println("BOOM!");
       armed = false;
-      cooldown = 100;
+      cooldown = 0;
     }
   }
 }
